@@ -2,10 +2,23 @@
 Quick review session for 1702 FSA/GH students in advance of express self-checkpoint
 
 ## Videos
-Playlist for the video review can be found here:
+Playlist for the video review of this repo being built can be found here:
 https://www.youtube.com/playlist?list=PLkkKgQIx1wZYNoeJXVMAiUJn7BlYYKQwI
 
 **NB: This was a live review, there may be some small inaccuracies in how things are described but I tried to repeat most of the questions for viewers**
+
+## Starting up
+To start up this repo:
+`npm install` to install node modules
+`npm start` runs nodemon on the app.js file
+
+## Routes to try:
+The server will start listening on `localhost:3000` by default
+Fire up an easy http client like <a href="https://www.getpostman.com/">Postman</a> and try some routes like:
+`GET: /puppies`
+`POST: /puppies`
+`GET: /puppies/:id`
+Check out the routes for more options!
 
 ## Review questions
 
