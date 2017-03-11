@@ -9,7 +9,7 @@ Dealing with multiple :params in the URI? How to make sure the right route?
 What is static middleware???
 
 ## Express routing:
-Express is basically a big nested queue
+Express is basically a big nested queue. Express goes through middleware and attempts to match the request path to middleware. If it matches an `app.use` sub-router on the way, it enters that sub-router and attemps to match against its
 ```js
 try {
 [
@@ -23,6 +23,8 @@ try {
   app.use('/path2'),
   // match all paths and handle errors callback with 4 arguments
   app.use('*', function(4 arguments)
+  // defaults to sending a 404 if no routes match
+  app.use('*', function(req, res, next){ res.sendStatus(404)})
 ]
 // if errors are caught, express helps handle
 } catch(error) {

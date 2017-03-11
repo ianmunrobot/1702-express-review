@@ -33,7 +33,7 @@ app.use('/puppies', puppiesRouter);
 // or if it doesn't hit a route
 app.use('*', function(req, res, next) {
   res.send('this is my default route');
-})
+});
 
 // We aren't doing any specific error handling, just letting express do it itself with it's default
 // See https://expressjs.com/en/guide/error-handling.html 'The Default Error Handler'
@@ -43,4 +43,4 @@ var server = app.listen(3000, function() {
   // this is an async callback, so the server.address().port is available
   // and set synchronously by the time we get into this callback function - fancy!
   console.log('listening on port', server.address().port);
-})
+});
