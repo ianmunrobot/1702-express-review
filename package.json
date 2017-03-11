@@ -1,0 +1,25 @@
+{
+  "name": "1702-express-review",
+  "version": "1.0.0",
+  "description": "## Review questions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianmunrobot/1702-express-review.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ianmunrobot/1702-express-review/issues"
+  },
+  "homepage": "https://github.com/ianmunrobot/1702-express-review#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "volleyball": "^1.4.1"
+  }
+}
