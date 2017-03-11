@@ -1,4 +1,5 @@
-// our 'memory'
+// our 'memory' for storing puppies
+// the 'id' of each puppy is its array index
 
 module.exports = [
   {
