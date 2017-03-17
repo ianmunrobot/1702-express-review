@@ -20,6 +20,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "sequelize": "^3.30.2",
     "volleyball": "^1.4.1"
   }
 }

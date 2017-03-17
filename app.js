@@ -3,6 +3,8 @@ var volleyball = require('volleyball');
 var bodyParser = require('body-parser');
 var path = require('path');
 
+var db = require('./db').db;
+
 // our router
 var puppiesRouter = require('./puppiesRouter');
 
@@ -42,5 +44,13 @@ app.use('*', function(req, res, next) {
 var server = app.listen(3000, function() {
   // this is an async callback, so the server.address().port is available
   // and set synchronously by the time we get into this callback function - fancy!
-  console.log('listening on port', server.address().port);
+  console.log('Server operating and listening on port', server.address().port, '...');
+  // change to force: true whenever you make a change to the db definition
+  db.sync({force: false})
+    .then(message => {
+      console.log('...and db is synced!');
+    })
+    .catch(function(err) {
+      throw err;
+    });
 });
