@@ -76,7 +76,7 @@ Sequelize methods - ???
 * `Model.findAll({where: {.......}})` finds all instances that match the where condition
 * `Model.findOne({where: {....}})` finds first match for the where condition
 * `Model.findById(id)` finds by an id number. Sequelize will coerce strings into ints, so you can simply use the `req.params.id` and not worry about casting to a `Number` before sending to Sequelize
-* Model.findOrCreate({where: {.....}}) will find an entry OR create it if necessary. returns `Instance` as first argument, and `created` boolean as the second. Good for making sure you don't make a bunch of duplicates
+* `Model.findOrCreate({where: {.....}})` will find an entry OR create it if necessary. returns `Instance` as first argument, and `created` boolean as the second. Good for making sure you don't make a bunch of duplicates
 * if the above queries return nothing, return value will be `null`
 
 ### Association Methods:
