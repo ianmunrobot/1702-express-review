@@ -56,3 +56,33 @@ try {
 ## Netflix and Express:
 Cool article on Netflix using express servers and running into erro
 http://techblog.netflix.com/2014/11/nodejs-in-flames.html
+
+## Sequelize
+
+
+Questions:
+Remind us which aspects are coming from Sequelize vs Express - where's the logic living?
+Where do I look in the docs - express or sequelize?
+
+General answer: anything dealing with `req` or `res` is in express docs. Anything in a Sequelize promise chain that's not touching either `req` or `res` - look to the <a href="http://docs.sequelizejs.com/en/v3/">Sequelize Docs</a>
+
+
+Sequelize methods - ???
+
+### Important Methods:
+
+* `Model.findAll()` finds all instances
+* `Model.findAll({where: {.......}}) finds all instances that match the where condition
+* `Model.findOne({where: {....}}) finds first match for the where condition
+* `Model.findById(id)` finds by an id number. Sequelize will coerce strings into ints, so you can simply use the `req.params.id` and not worry about casting to a `Number` before sending to Sequelize
+* Model.findOrCreate({where: {.....}}) will find an entry OR create it if necessary. returns `Instance` as first argument, and `created` boolean as the second. Good for making sure you don't make a bunch of duplicates
+* if the above queries return nothing, return value will be `null`
+
+### Association Methods:
+
+* For `belongsTo` 1:1 relationships
+* `Puppy.belongsTo(Park)` will put a foreign key `parkId` in the `Puppy` relation
+* with aliases: `Puppy.belongsTo(Park, {as: 'favPark'})` will put the `favParkId` on the `Puppy` relation
+* continuing: it will also give a `.setFavPark(<Park instance or id>)` and `.getFavPark(<Park instance or id>)` on the `Puppy` instance
+
+There are many more - hit up the Sequelize docs for more info
