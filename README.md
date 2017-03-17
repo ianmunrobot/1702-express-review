@@ -43,7 +43,7 @@ try {
   // if the path matches this /path, enter
   app.use('/path2'),
   // match all paths and handle errors callback with 4 arguments
-  app.use('*', function(4 arguments)
+  app.use('*', function(4 arguments),
   // defaults to sending a 404 if no routes match
   app.use('*', function(req, res, next){ res.sendStatus(404)})
 ]
