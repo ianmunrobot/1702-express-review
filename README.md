@@ -1,5 +1,6 @@
-# 1702-express-review
-Quick review session for 1702 FSA/GH students in advance of express self-checkpoint
+# 1702-express-sequelize-review
+Quick review session for 1702 FSA/GH students for `Express` and `Sequelize`
+To view the express only version of this repo, check out this <a href="https://github.com/ianmunrobot/1702-express-review/tree/express-review-ending-point">branch</a>
 
 ## Videos
 Playlist for the video review of this repo being built can be found here:
