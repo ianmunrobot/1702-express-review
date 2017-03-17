@@ -1,67 +1,79 @@
 var router = require('express').Router();
 
-var puppies = require('./puppies')
+// old non-persistent puppy 'memory'
+// var puppies = require('./puppies');
+
+var Puppy = require('./db').Puppy;
 
 module.exports = router;
 
 // get all puppies route
 router.get('/', function(req, res, next) {
-  res.send(puppies)
-});
-
-// get puppy by id
-router.get('/:id', function(req, res, next) {
-  var id = req.params.id;
-  var query = req.query;
-  var puppy = puppies[id];
-  // allow for queries for particular keys in the puppy object
-  // or for sending back the entire puppy
-  var isEmptyQuery = Object.keys(query).length
-  if (!isEmptyQuery) {
-    res.send(puppy);
-  } else {
-    var responses = {}
-    Object.keys(query).forEach(function(key) {
-      responses[key] = puppy[key]
-    })
-    res.send(responses);
-  }
+  // here we can also use a req.query to match against puppies if we need to!
+  // this allows use to use routes like /puppies?favFood=pizza to get all puppies who love pizza.
+  // if no query is present, we there is no where condition to match against, so everthing is returned. neat!
+  Puppy.findAll({
+    where: req.query
+  })
+    // quick one-line res.send. This will res.send whatever the previous promise resolves to.
+    .then(res.send.bind(res))
+    .catch(next);
 });
 
 // update a particular puppy
 router.put('/:id', function(req, res, next) {
-  var puppy = puppies[req.params.id];
-  // overwrite or copy new key/value pairs onto the puppy object
-  Object.assign(puppy, req.body);
-  // send the updated puppy
-  res.send(puppy);
+  // two arguments: object of key/value pairs to update,
+  // options object with where matching and other options, like whether to return or not!
+  Puppy.update(req.body,
+  {
+    where: {
+      id: req.params.id,
+    },
+    // must use returning option to actually get the updated instances back from the db
+    returning: true,
+  })
+  .then(function(whateverUpdateReturns) {
+    // Model.update returns an array of two elements:
+    // element 1: number of rows theActualUpdatedPuppy
+    // element 2: array of all updated instances.
+    // in this case we are only ever updating one instance(by id)
+    // so we'll scrape out the actual updated puppy from this array
+    console.log(whateverUpdateReturns);
+    return whateverUpdateReturns[1][0];
+  })
+  .then(function(theActualUpdatedPuppy) {
+    res.send(theActualUpdatedPuppy);
+  })
+  .catch(next);
 });
-
-
-// dummy route if we had something like Sequelize hooked up
-// shows use of two params in a single route
-router.get('/:puppyId/orders/:puppyOrderId', function(req, res, next) {
-  // find something based on the first param
-  puppies.findById(req.params.puppyId)
-    .then(function(puppy) {
-      // then find something else based on the result of the first query
-      return puppy.getAllOrders({
-        where: {
-          orderId: req.params.orderId
-        }
-      })
-    })
-    // once you get both things, send response
-    .then(function(result) {
-      res.send(result);
-    })
-})
 
 // post a new puppy
 // req.body is the puppy object
 router.post('/', function(req, res, next) {
-  var puppy = req.body;
-  puppies.push(puppy);
-  req.puppy = puppy;
-  res.send(puppy);
-})
+  Puppy.create(req.body)
+    .then(function(puppy) {
+      res.send(puppy);
+    })
+    .catch(next);
+});
+
+// get puppy by id
+router.get('/:id', function(req, res, next) {
+  Puppy.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  // the previous query and the one on the following line work identically in this instance
+  // Puppy.findById(req.params.id)
+  .then(function(puppy) {
+    // if no puppy is found, we can let the requester know
+    if (!puppy) res.send('not found!')
+    else {
+      // if we want, we can call an instance method of this puppy here
+      console.log(puppy.greet());
+      res.send(puppy)
+    }
+  })
+  .catch(next);
+});
