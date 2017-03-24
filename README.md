@@ -92,6 +92,8 @@ Where do I look in the docs - express or sequelize?
 
 ## Part 3: Sequelize Association Methods:
 
+For this segment of the review, we significantly changed the starting point from the previous ending point in order to save time during the live review. 3 new models were defined: `Park`, `Location`, and `Food`, with corresponding basic routers. The file structure was expanded so that there are separate `/routes` and `/models` folders. Seed data was also added in the `seed.js` and `seedAssociations.js`
+
 [This document](Sequelize-Associations.md) explains more about the `Sequelize` methods and a bit more about what we aimed to do with this review session
 
 You'll notice some new seeding files in this branch - this is to illustrate a bit about how to construct seed files, with or without associations
