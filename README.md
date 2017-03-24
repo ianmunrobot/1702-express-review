@@ -1,27 +1,38 @@
-# 1702-express-sequelize-review
-Quick review session for 1702 FSA/GH students for `Express` and `Sequelize`
-To view the express only version of this repo, check out this <a href="https://github.com/ianmunrobot/1702-express-review/tree/express-review-ending-point">branch</a>
+# 1702 Express/Sequelize/Associations Review
+Quick review session for 1702 FSA/GH students for `Express` and `Sequelize` and `Sequelize` association methods
+
+To view the express only version of this repo, check out this [branch](https://github.com/ianmunrobot/1702-express-review/tree/express-review-ending-point)
+
+To view the express-sequelize version of this repo, check out this [branch](https://github.com/ianmunrobot/1702-express-review/tree/sequelize-review-ending-point)
 
 ## Videos
-Playlist for the video review of this repo being built can be found here:
-https://www.youtube.com/playlist?list=PLkkKgQIx1wZYNoeJXVMAiUJn7BlYYKQwI
+Playlist for the video review of this repo being built can be found [here](https://www.youtube.com/playlist?list=PLkkKgQIx1wZYNoeJXVMAiUJn7BlYYKQwI)
 
 **NB: This was a live review, there may be some small inaccuracies in how things are described but I tried to repeat most of the questions for viewers**
 
 ## Starting up
-To start up this repo:
-`npm install` to install node modules
-`npm start` runs nodemon on the app.js file
+To start up:
+* `createdb puppies` in the command line to create your postgres database
+* `npm install` to install node modules
+* `npm run seed` to seed your DB with the latest and greatest puppies/parks/locations/etc (this will clear/reset the db)
+* `npm run seed:associations` to seed some semi-randomized associations in your puppy instances
+* *or*
+* `npm run seed:all` to seed the instances and also the associations
+* `npm start` starts the server, you can now make requests to `localhost:3000`
 
 ## Routes to try:
 The server will start listening on `localhost:3000` by default
-Fire up an easy http client like <a href="https://www.getpostman.com/">Postman</a> and try some routes like:
-`GET: /puppies`
-`POST: /puppies`
-`GET: /puppies/:id`
-Check out the routes for more options!
 
-## Review questions
+Fire up an easy http client like <a href="https://www.getpostman.com/">Postman</a> and try some routes like:
+* `GET: /puppies`
+* `POST: /puppies`
+* `GET: /puppies/:id`
+
+Check out all the routers in `/routes` for more options!
+
+## Part 1: Express
+
+### Express Review questions
 
 Dealing with queries and how to route them?
 
@@ -29,7 +40,7 @@ Dealing with multiple :params in the URI? How to make sure the right route?
 
 What is static middleware???
 
-## Express routing:
+### Express routing:
 Express is basically a big nested queue. Express goes through middleware and attempts to match the request path to middleware. If it matches an `app.use` sub-router on the way, it enters that sub-router and attemps to match against its
 ```js
 try {
@@ -54,21 +65,21 @@ try {
 }
 ```
 
-## Netflix and Express:
+### Netflix and Express:
 Cool article on Netflix using express servers and running into erro
 http://techblog.netflix.com/2014/11/nodejs-in-flames.html
 
-## Sequelize
+## Part 2: Sequelize
 
 
 Questions:
-Remind us which aspects are coming from Sequelize vs Express - where's the logic living?
+
+* Remind us which aspects are coming from Sequelize vs Express - where's the logic living?
 Where do I look in the docs - express or sequelize?
 
-General answer: anything dealing with `req` or `res` is in express docs. Anything in a Sequelize promise chain that's not touching either `req` or `res` - look to the <a href="http://docs.sequelizejs.com/en/v3/">Sequelize Docs</a>
+  * General answer: anything dealing with `req` or `res` is in express docs. Anything in a Sequelize promise chain that's not touching either `req` or `res` - look to the <a href="http://docs.sequelizejs.com/en/v3/">Sequelize Docs</a>
 
-
-Sequelize methods - ???
+* Sequelize methods - what do we get and how do we use them?
 
 ### Important Methods:
 
@@ -79,11 +90,10 @@ Sequelize methods - ???
 * `Model.findOrCreate({where: {.....}})` will find an entry OR create it if necessary. returns `Instance` as first argument, and `created` boolean as the second. Good for making sure you don't make a bunch of duplicates
 * if the above queries return nothing, return value will be `null`
 
-### Association Methods:
+## Part 3: Sequelize Association Methods:
 
-* For `belongsTo` 1:1 relationships
-* `Puppy.belongsTo(Park)` will put a foreign key `parkId` in the `Puppy` relation
-* with aliases: `Puppy.belongsTo(Park, {as: 'favPark'})` will put the `favParkId` on the `Puppy` relation
-* continuing: it will also give a `.setFavPark(<Park instance or id>)` and `.getFavPark(<Park instance or id>)` on the `Puppy` instance
+For this segment of the review, we significantly changed the starting point from the previous ending point in order to save time during the live review. 3 new models were defined: `Park`, `Location`, and `Food`, with corresponding basic routers. The file structure was expanded so that there are separate `/routes` and `/models` folders. Seed data was also added in the `seed.js` and `seedAssociations.js`
 
-There are many more - hit up the Sequelize docs for more info
+[This document](Sequelize-Associations.md) explains more about the `Sequelize` methods and a bit more about what we aimed to do with this review session
+
+You'll notice some new seeding files in this branch - this is to illustrate a bit about how to construct seed files, with or without associations

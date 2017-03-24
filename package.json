@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "seed": "node seed.js",
+    "seed:associations": "node seedAssociations.js",
+    "seed:all": "node seed.js && node seedAssociations.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +21,10 @@
   },
   "homepage": "https://github.com/ianmunrobot/1702-express-review#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "pg": "^6.1.5",
     "sequelize": "^3.30.2",
     "volleyball": "^1.4.1"
   }
