@@ -14,6 +14,8 @@ let allPuppies,
     allLocations;
 
 // array of promises to find all the db data
+// and store it in outer-scoped variables, so
+// we can refer to all of them when seeding associations
 let findAllPromises = [
   Puppy.findAll().then(puppies => allPuppies = puppies),
   Food.findAll().then(foods => allFoods = foods),
@@ -21,7 +23,7 @@ let findAllPromises = [
   Location.findAll().then(locations => allLocations),
 ]
 
-// not syncing - we'll run this after we seed the rest of the db
+// not forcing true - we'll run this after we seed the rest of the db
 db.sync({force: false})
 .then(() => {
   // make sure we don't move on until all the db associations have happened
