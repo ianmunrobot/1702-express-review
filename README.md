@@ -1,10 +1,12 @@
-# 1702-express-sequelize-review
+# 1702 Express/Sequelize/Associations Review
 Quick review session for 1702 FSA/GH students for `Express` and `Sequelize` and `Sequelize` association methods
-To view the express only version of this repo, check out this <a href="https://github.com/ianmunrobot/1702-express-review/tree/express-review-ending-point">branch</a>
+
+To view the express only version of this repo, check out this [branch](https://github.com/ianmunrobot/1702-express-review/tree/express-review-ending-point)
+
+To view the express-sequelize version of this repo, check out this [branch](https://github.com/ianmunrobot/1702-express-review/tree/sequelize-review-ending-point)
 
 ## Videos
-Playlist for the video review of this repo being built can be found here:
-https://www.youtube.com/playlist?list=PLkkKgQIx1wZYNoeJXVMAiUJn7BlYYKQwI
+Playlist for the video review of this repo being built can be found [here](https://www.youtube.com/playlist?list=PLkkKgQIx1wZYNoeJXVMAiUJn7BlYYKQwI)
 
 **NB: This was a live review, there may be some small inaccuracies in how things are described but I tried to repeat most of the questions for viewers**
 
@@ -90,6 +92,6 @@ Where do I look in the docs - express or sequelize?
 
 ## Part 3: Sequelize Association Methods:
 
-[see here](Sequelize-Associations.md)
+[This document](Sequelize-Associations.md) explains more about the `Sequelize` methods and a bit more about what we aimed to do with this review session
 
-This
+You'll notice some new seeding files in this branch - this is to illustrate a bit about how to construct seed files, with or without associations
