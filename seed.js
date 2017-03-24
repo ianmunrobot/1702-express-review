@@ -1,14 +1,14 @@
 // importing Bluebird promises so we can Promise.map
-var Promise = require('bluebird');
+const Promise = require('bluebird');
 // bring in the db and all the Models to seed
-var db = require('./db');
-var Puppy = require('./models/Puppy');
-var Park = require('./models/Park');
-var Food = require('./models/Food');
-var Location = require('./models/Location');
+const db = require('./db');
+const Puppy = require('./models/Puppy');
+const Park = require('./models/Park');
+const Food = require('./models/Food');
+const Location = require('./models/Location');
 
 // each of the following array will be iterated and Created
-var locationData = [
+const locationData = [
   {
     address: '11th Floor, 5 Hanover Square, NY'
   },
@@ -20,7 +20,7 @@ var locationData = [
   },
 ]
 
-var puppyData = [
+const puppyData = [
   {
     firstName: 'Puppy',
     lastName: 'Doggo',
@@ -53,7 +53,7 @@ var puppyData = [
   },
 ];
 
-var foodData = [
+const foodData = [
   {
     name: 'pizza',
     deliciousness: 4,
@@ -76,7 +76,7 @@ var foodData = [
   },
 ]
 
-var parkData = [
+const parkData = [
   {
     name: 'Fullstack Park',
   },
@@ -94,50 +94,44 @@ var parkData = [
 
 // Sync and restart db before seeding
 db.sync({ force: true })
-.then(function() {
+.then(() => {
   console.log('synced DB and dropped old data');
 })
 // here, we go through all the models one by one, create each
 // element from the seed arrays above, and log how many are created
-.then(function() {
+.then(() => {
   return Promise.map(locationData, function(location) {
     return Location.create(location);
   })
 })
-.then(function(createdLocations) {
+.then(createdLocations => {
   console.log(`${createdLocations.length} locations created`);
 })
-.then(function() {
-  return Promise.map(puppyData, function(puppy) {
-    return Puppy.create(puppy);
-  })
+.then(() => {
+  return Promise.map(puppyData, puppy => Puppy.create(puppy))
 })
-.then(function(createdPuppies) {
+.then(createdPuppies => {
   console.log(`${createdPuppies.length} puppies created`);
 })
-.then(function() {
-  return Promise.map(foodData, function(food) {
-    return Food.create(food);
-  })
+.then(() => {
+  return Promise.map(foodData, food => Food.create(food))
 })
-.then(function(createdFoods) {
+.then(createdFoods => {
   console.log(`${createdFoods.length} foods created`);
 })
-.then(function() {
-  return Promise.map(parkData, function(park) {
-    return Park.create(park);
-  })
+.then(() => {
+  return Promise.map(parkData, park => Park.create(park))
 })
-.then(function(createdParks) {
+.then(createdParks => {
   console.log(`${createdParks.length} parks created`);
 })
-.then(function () {
+.then(() => {
   console.log('Seeded successfully');
 })
-.catch(function(err) {
+.catch(err => {
   console.error('Error!', err, err.stack);
 })
-.finally(function() {
+.finally(() => {
   db.close();
   console.log('Finished!');
   return null;
