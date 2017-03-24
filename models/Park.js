@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var db = require('../db');
+const Sequelize = require('sequelize');
+const db = require('../db');
 
-Park = db.define('park', {
+const Park = db.define('park', {
   name: Sequelize.STRING
 })
 

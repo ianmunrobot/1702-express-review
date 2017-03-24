@@ -23,12 +23,16 @@ and this would add `getModel1s`, `setModel1s`, `addModel1`, and `addModel1s` to 
 
 * `Puppies` have lots of foods that they like. And `Foods` can be enjoyed by many different puppies
 
-* Each `Puppy` has a favorite `Park` that we'd like to be able to access as its `favoritePark`
+* Each `Puppy` can have a favorite `Park`
 
 * Each `Park` is linked to a single `Location`
+
+* Each `Puppy` can have a single `bestFriend` `Puppy` (but that puppy doesn't need to reciprocate)
 
 * We will build/modify routes to allow for things like
   * Puppies return with their favorite foods
   * Adding a favorite food to a puppy
   * Adding a location to a park
-  * Creating a new Park with the associated location
+  * Creating a new `Park` with the associated `Location`
+
+* Not everything got done in the live review - feel free to clone/fork and finish up these routes so that we can have a fully functional puppy API!

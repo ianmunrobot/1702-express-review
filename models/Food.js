@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var db = require('../db');
+const Sequelize = require('sequelize');
+const db = require('../db');
 
-var Food = db.define('food', {
+const Food = db.define('food', {
   name: {
     type: Sequelize.STRING,
   },
@@ -9,7 +9,7 @@ var Food = db.define('food', {
     type: Sequelize.INTEGER,
     validate: {
       min: 1,
-      max: 10,
+      max: 5,
     }
   }
 });

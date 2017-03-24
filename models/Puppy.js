@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
-var db = require('../db');
+const Sequelize = require('sequelize');
+const db = require('../db');
 
-var Puppy = db.define('puppy', {
+const Puppy = db.define('puppy', {
   firstName: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -20,9 +20,6 @@ var Puppy = db.define('puppy', {
     type: Sequelize.INTEGER,
     allowNull: false,
     defaultValue: 1,
-  },
-  favFood: {
-    type: Sequelize.STRING,
   },
   // one way to set a getter method/virtual: define it on the model
   // see getterMethods below for another option
@@ -47,9 +44,6 @@ var Puppy = db.define('puppy', {
     greet: function() {
       return 'Woof my name is ' + this.fullName;
     },
-    // fullName: function() {
-    //   return this.firstName + ' ' + this.lastName;
-    // }
   },
   classMethods: {
     // this refers to the class (capital 'P' Puppy) in class methods

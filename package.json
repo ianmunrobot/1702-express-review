@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "seed": "node seed.js",
+    "seed:associations": "node seedAssociations.js",
+    "seed:all": "node seed.js && node seedAssociations.js"
   },
   "repository": {
     "type": "git",
