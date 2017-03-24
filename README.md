@@ -68,7 +68,7 @@ Where do I look in the docs - express or sequelize?
 General answer: anything dealing with `req` or `res` is in express docs. Anything in a Sequelize promise chain that's not touching either `req` or `res` - look to the <a href="http://docs.sequelizejs.com/en/v3/">Sequelize Docs</a>
 
 
-Sequelize methods - ???
+Sequelize methods - Can we go over what the main methods are? And some of the magic methods?
 
 ### Important Methods:
 
