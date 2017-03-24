@@ -3,10 +3,13 @@ var volleyball = require('volleyball');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-var db = require('./db').db;
+var db = require('./db');
 
-// our router
-var puppiesRouter = require('./puppiesRouter');
+// our routers
+var puppiesRouter = require('./routes/puppies');
+var foodsRouter = require('./routes/foods');
+var parksRouter = require('./routes/parks');
+var locationsRouter = require('./routes/locations')
 
 // instantiate an instance of an express server
 var app = express();
@@ -28,8 +31,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 // localhost:3000/large.jpg' will send back a puppy image
 app.use(express.static(path.join(__dirname, 'public')));
 
-// router to serve up puppies from the server
+// API routers to serve up data from the server
 app.use('/puppies', puppiesRouter);
+app.use('/foods', foodsRouter);
+app.use('/parks', parksRouter);
+app.use('/locations', locationsRouter);
 
 // all routes will eventually hit this by default if response is not sent
 // or if it doesn't hit a route

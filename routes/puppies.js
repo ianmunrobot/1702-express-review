@@ -3,7 +3,7 @@ var router = require('express').Router();
 // old non-persistent puppy 'memory'
 // var puppies = require('./puppies');
 
-var Puppy = require('./db').Puppy;
+var Puppy = require('../models/Puppy');
 
 module.exports = router;
 

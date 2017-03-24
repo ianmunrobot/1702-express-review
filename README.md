@@ -10,7 +10,9 @@ https://www.youtube.com/playlist?list=PLkkKgQIx1wZYNoeJXVMAiUJn7BlYYKQwI
 
 ## Starting up
 To start up this repo:
+`createdb puppies` in the command line to create your postgres database
 `npm install` to install node modules
+`node seed.js` to seed your DB with the latest and greatest puppies
 `npm start` runs nodemon on the app.js file
 
 ## Routes to try:

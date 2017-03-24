@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/ianmunrobot/1702-express-review#readme",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "pg": "^6.1.5",
     "sequelize": "^3.30.2",
     "volleyball": "^1.4.1"
   }
