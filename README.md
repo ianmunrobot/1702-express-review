@@ -8,7 +8,12 @@ To view the express-sequelize version of this repo, check out this [branch](http
 ## Videos
 Playlist for the video review of this repo being built can be found [here](https://www.youtube.com/playlist?list=PLkkKgQIx1wZYNoeJXVMAiUJn7BlYYKQwI)
 
-**NB: This was a live review, there may be some small inaccuracies in how things are described but I tried to repeat most of the questions for viewers**
+### Individual Videos:
+Express: [Part 1](https://www.youtube.com/watch?v=icZqjfODmz0) [Part 2](https://www.youtube.com/watch?v=5yOWs4Qarg4)
+
+Sequelize [Part 1 - basic structure](https://www.youtube.com/watch?v=EupsLAxCEAg) [Part 2 - associations](https://www.youtube.com/watch?v=isk0JR0t_VQ)
+
+**NB: This was all live review, there may be some small inaccuracies in how things are described but I tried to repeat most of the questions for viewers**
 
 ## Starting up
 To start up:
