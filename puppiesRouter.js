@@ -59,19 +59,21 @@ router.post('/', function(req, res, next) {
 
 // get puppy by id
 router.get('/:id', function(req, res, next) {
+ var inputFood = req.query.food;
+console.log('testing instance and class methods: ' + JSON.stringify(req.query.food) + '\n');
   Puppy.findOne({
-    where: {
+    where: {  //sequelize
       id: req.params.id
     }
   })
-  // the previous query and the one on the following line work identically in this instance
-  // Puppy.findById(req.params.id)
-  .then(function(puppy) {
-    // if no puppy is found, we can let the requester know
-    if (!puppy) res.send('not found!')
+  //alternative
+  // Puppy_DB.findById(req.params.id)
+  .then(function (puppy) {
+    if (!puppy) res.send('that pup does not exist, try other id')
     else {
-      // if we want, we can call an instance method of this puppy here
       console.log(puppy.greet());
+      puppy.constructor.count();
+      puppy.constructor.findByFavFood(inputFood); //localhost:3000/puppies/2?food=pizza returns the number of puppies with favFood pizza
       res.send(puppy)
     }
   })
