@@ -1,3 +1,22 @@
+
+# Quick notes (postgreSQL):
+For ubuntu: apt-get install postgresql-9.6
+
+Sample instalation of postgreSQL database in windows: https://www.youtube.com/watch?v=fD7x8hd9yE4
+
+psql -U postgres -h localhost (-U for user, in this case postgres, -h for hostname)
+
+Upon connecting to the postgreSQL database, it is possible that installing the pg package manually is required. Use the command below:
+npm i -S pg
+
+add psql to the environment variables in windows if psql is not being recognized https://siteofachyu.wordpress.com/2017/11/03/psql-not-recognized-as-an-internal-or-external-command-in-windows/
+
+
+
+/////////////////////////////////////////////////////////////////
+Original readme below
+/////////////////////////////////////////////////////////////////
+
 # 1702-express-sequelize-review
 Quick review session for 1702 FSA/GH students for `Express` and `Sequelize`
 To view the express only version of this repo, check out this <a href="https://github.com/ianmunrobot/1702-express-review/tree/express-review-ending-point">branch</a>
